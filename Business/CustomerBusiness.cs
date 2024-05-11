@@ -9,7 +9,12 @@ using System.Threading.Tasks;
 namespace Business
 {
     public class CustomerBusiness
-    {
+    { 
+        private CustomersData data;
+        public CustomerBusiness()
+        {
+            CustomersData data= new CustomersData();
+        }
 
         public List<Customers> GetCostumers(string name)
         {
@@ -31,5 +36,18 @@ namespace Business
 
             return result;
         }
+
+        public void InsertCostumer()
+        {
+            CustomersData data = new CustomersData();
+            data.InsertCustomers();
+        }
+
+        public void DeleteCustomer(int id)
+        {
+         
+            data.DeleteCustomer(id);
+        }
+
     }
 }

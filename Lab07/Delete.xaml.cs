@@ -1,5 +1,11 @@
 ﻿using Business;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -7,33 +13,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lab07
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para Delete.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Delete : Window
     {
-        public MainWindow()
+        public Delete()
         {
             InitializeComponent();
-            
+            CargarDatos();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CargarDatos()
         {
             CustomerBusiness business = new CustomerBusiness();
             GetCustomerName.ItemsSource = business.GetCostumers("");
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BtnBorrarCliente_Click(object sender, RoutedEventArgs e)
         {
+
             CustomerBusiness business = new CustomerBusiness();
-            GetCustomerName.ItemsSource = business.GetCostumersByName("");
+            business.DeleteCustomer(1);
+            CargarDatos();
         }
     }
 }
